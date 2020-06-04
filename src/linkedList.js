@@ -12,12 +12,13 @@ class LinkedList {
     this.head = null;
     this.size = 0;
   }
+
   //insert first node
   insertData(data) {
-    // console.log("hi",this.head);
     this.head = new Node(data, this.head);
     this.size++;
   }
+
   //insert last node
   insertLast(data) {
     let node = new Node(data);
@@ -27,6 +28,7 @@ class LinkedList {
       this.head = node;
     } else {
       current = this.head;
+
       while (current.next) {
         current = current.next;
       }
@@ -35,10 +37,11 @@ class LinkedList {
     }
     this.size++;
   }
+
   //insert at index
   insertAt(data, index) {
     if (index > 0 && index > this.size) {
-     throw Error('Index out of range');
+      throw Error('Index out of range');
     }
     if (index === 0) {
       this.insertData(data);
@@ -48,16 +51,54 @@ class LinkedList {
     let current, previous;
     current = this.head;
     let count = 0;
+
     while (count < index) {
       previous = current; // before inserting the new node
-      // console.log('previous', previous);
       count++;
       current = current.next; //Node after index
     }
     node.next = current;
-    // console.log('previous1',previous);
     previous.next = node;
   }
+
+  //get data from index
+  getAt(index) {
+    let current = this.head;
+    let count = 0;
+    while (current) {
+      if (count == index) {
+        console.log(current.data);
+      }
+      count++;
+      current = current.next;
+    }
+    return;
+  }
+
+  //remove data from index
+  removeData(index) {
+    if (index > 0 && index > this.size) {
+      throw Error('Index out of range');
+    }
+
+    let current = this.head;
+    let previous;
+    let count = 0;
+
+    //remove first
+    if (index === 0) {
+      this.head = current.next;
+    } else {
+      while (count < index) {
+        count++;
+        previous = current; // before deleting
+        current = current.next;
+      }
+      previous.next = current.next;
+    }
+    this.size--;
+  }
+
   //Print data
   printData() {
     let current = this.head;
@@ -67,6 +108,7 @@ class LinkedList {
     }
   }
 
+  //moving to array
   toArray() {
     const listArray = [];
     let current = this.head;
@@ -77,5 +119,6 @@ class LinkedList {
     return listArray;
   }
 }
+
 
 export default LinkedList;

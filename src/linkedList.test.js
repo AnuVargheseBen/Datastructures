@@ -30,4 +30,14 @@ describe('LinkedList', () => {
 
     expect(() => list.insertAt(45, 5)).toThrow('Index out of range');
   });
+  it('should delete at index' , () =>{
+    const list = new LinkedList();
+    list.insertData(234);
+    list.insertData(456);
+    list.insertLast(432);
+    expect(list.toArray()).toEqual([456,234,432]);
+
+    list.removeData(2);
+    expect(() => list.removeData(6).toThrow('Index out of range'));
+  })
 });
