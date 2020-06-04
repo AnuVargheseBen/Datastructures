@@ -65,6 +65,9 @@ class LinkedList {
   getAt(index) {
     let current = this.head;
     let count = 0;
+    if(index > 0 && index > this.size){
+      throw Error('Index out of range');
+    }
     while (current) {
       if (count == index) {
         console.log(current.data);
