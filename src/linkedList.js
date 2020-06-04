@@ -65,7 +65,7 @@ class LinkedList {
   getAt(index) {
     let current = this.head;
     let count = 0;
-    if(index > 0 && index > this.size){
+    if (index > 0 && index > this.size) {
       throw Error('Index out of range');
     }
     while (current) {
@@ -76,6 +76,19 @@ class LinkedList {
       current = current.next;
     }
     return;
+  }
+
+  //find data
+  findData(data) {
+    let current = this.head;
+    while (current) {
+      if (data === current.data) {
+        console.log('searched data:', current.data);
+      } else {
+        return null;
+      }
+      current = current.next;
+    }
   }
 
   //remove data from index
@@ -122,6 +135,5 @@ class LinkedList {
     return listArray;
   }
 }
-
 
 export default LinkedList;
